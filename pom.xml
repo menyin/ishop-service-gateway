@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cny</groupId>
+        <artifactId>ishop-dependencies</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../ishop-dependencies/pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.cny</groupId>
+    <artifactId>ishop-service-gateway</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>ishop-service-gateway</name>
+    <url>http://www.cny.com</url>
+    <inceptionYear>2020-Now</inceptionYear>
+
+
+    <dependencies>
+         <!--Spring Boot Begin-->
+        <!--actuator是本地监控，用于运维，有待了解-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Spring Boot End -->
+
+        <!-- Spring Cloud Begin -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-gateway-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <!--<groupId>org.springframework.cloud</groupId> **** 特别注意：这里是用com.alibaba.cloud ****-->
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <!--<groupId>org.springframework.cloud</groupId> **** 特别注意：这里是用com.alibaba.cloud ****-->
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!-- Spring Cloud End -->
+
+        <!-- Commons Begin -->
+        <!--因为有可能有用到web的过滤器 所以加入servlet引用 *** 注意：建议过滤器也统一用SpringcloudGateway提供的GlobalFilter而不用WebFilter-->
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>javax.servlet-api</artifactId>-->
+        <!--</dependency>-->
+        <!-- Commons Begin -->
+
+
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.cny.ishop.service.gateway.GatewayAppBoot</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
